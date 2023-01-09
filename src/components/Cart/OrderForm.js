@@ -22,7 +22,7 @@ const OrderForm =(props)=>{
       }
 
     return(
-    <>
+   
     <div className={classes.form}>
         <form onSubmit={handleSubmit(onSubmit)}>
         
@@ -55,11 +55,9 @@ const OrderForm =(props)=>{
       
             <button className={classes['button--alt']} type="button" onClick={resetTheCart}>cancel</button>
             <button className={classes.button } type="submit">confirm</button>
-    </div>
-            
-</form>
+        </div>    
+    </form>
 </div>
-</>
     )
 }
 export default OrderForm;
