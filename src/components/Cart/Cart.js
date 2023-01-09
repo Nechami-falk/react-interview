@@ -1,12 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
+import OrderForm from '../UI/OrderForm';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
+  const [displayOrderForm, setDisplayOrderForm ] = useState(false);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -19,6 +21,7 @@ const Cart = (props) => {
     cartCtx.addItem(item);
   };
 
+  
   const cartItems = (
     <ul className={classes['cart-items']}>
       {cartCtx.items.map((item) => (
@@ -33,20 +36,31 @@ const Cart = (props) => {
       ))}
     </ul>
   );
+  const onAddForm =()=>{
+    setDisplayOrderForm(true);
+  }
+
+  
 
   return (
     <Modal onClose={props.onClose}>
-      {cartItems}
+     {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
+      {displayOrderForm && <OrderForm onClose={props.onClose}/>}
+
+
+      {!displayOrderForm && 
       <div className={classes.actions}>
+      
         <button className={classes['button--alt']} onClick={props.onClose}>
           Close
         </button>
-        {hasItems && <button className={classes.button}>Order</button>}
+        {hasItems && <button className={classes.button } onClick={onAddForm}>Order</button>}
       </div>
+    }
     </Modal>
   );
 };

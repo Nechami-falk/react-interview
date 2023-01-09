@@ -14,10 +14,8 @@ const AvailableMeals = () => {
       try{
         const data = await fetch('https://react-interview-api-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
         const json = await data.json();
-        console.log(json);
         const mealsData = Object.keys(json).map(k => ({id:k, name:json[k].name, description:json[k].description, price:json[k].price}));
         setMeals(mealsData);  
-        console.log(mealsData);
       }
       catch(ex){
         console.log(ex);
