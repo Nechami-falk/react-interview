@@ -4,7 +4,7 @@ import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
-import OrderForm from '../UI/OrderForm';
+import OrderForm from './OrderForm';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -24,7 +24,7 @@ const Cart = (props) => {
   
   const cartItems = (
     <ul className={classes['cart-items']}>
-      {cartCtx.items.map((item) => (
+      {cartCtx && cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
           name={item.name}
