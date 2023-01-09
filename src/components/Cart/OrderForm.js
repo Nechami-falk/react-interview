@@ -23,8 +23,6 @@ const OrderForm =(props)=>{
 
     return(
     <>
-    <div>
-       
     <div className={classes.form}>
         <form onSubmit={handleSubmit(onSubmit)}>
         
@@ -60,7 +58,6 @@ const OrderForm =(props)=>{
     </div>
             
 </form>
-</div>
 </div>
 </>
     )
