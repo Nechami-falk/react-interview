@@ -18,7 +18,6 @@ const OrderForm =(props)=>{
   
     const resetTheCart=()=>{
         console.log('reset');
-        cartCtx.items=[];
       }
 
     return(
